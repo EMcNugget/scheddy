@@ -152,6 +152,10 @@
 						You cannot cancel or reschedule this session, as it is within 24 hours. Contact your
 						mentor.
 					</p>
+				{:else if data.hasSession}
+				<p>
+					You cannot schedule more than one session at a time.
+				</p>
 				{:else if step === 1}
 					<Select bind:value={sessionType} label="Session Type">
 						{#each Object.entries(categories) as [k, v]}

@@ -214,6 +214,9 @@ export const load: PageServerLoad = async ({ cookies, url }) => {
 	const originalSessionId = url.searchParams.get('sessionId')!;
 	const ogSession = await db.select().from(sessions).where(eq(sessions.id, originalSessionId));
 
+	const hasSession =
+		(await db.select().from(sessions).where(eq(sessions.student, user.id)).length) > 0;
+
 	return {
 		user,
 		role: roleString(roleOf(user)),
@@ -224,7 +227,8 @@ export const load: PageServerLoad = async ({ cookies, url }) => {
 		slotData,
 		originalSessionType,
 		originalSessionId,
-		ogSession
+		ogSession,
+		hasSession
 	};
 };
 
