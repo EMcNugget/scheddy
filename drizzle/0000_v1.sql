@@ -18,6 +18,7 @@ CREATE TABLE `sessionType` (
 	`name` text NOT NULL,
 	`category` text NOT NULL,
 	`length` int NOT NULL,
+	`rating` int NOT NULL,
 	CONSTRAINT `sessionType_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
